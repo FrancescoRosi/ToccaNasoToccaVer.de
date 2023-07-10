@@ -113,6 +113,16 @@
                     mix-blend-mode: initial;
                 }
             }
+            @media screen and (max-width: 1024px) {
+                .e {
+                    flex-direction: column !important;
+                }
+                body {
+                    background-size: contain !important;
+                    background-repeat: no-repeat !important;
+                    background-position: center !important;
+                }
+            }
         </style>
     </head>
     <body>
@@ -136,8 +146,7 @@
                 document.querySelectorAll(".hidden").forEach(el => {
                     el.classList.replace("hidden", "hidden-no-more");
                 });
-                // document.querySelector("audio").src = `${luxon.DateTime.now().c.hour}${luxon.DateTime.now().c.hour}.mp3`;
-                document.querySelector("audio").src = "1010.mp3";
+                document.querySelector("audio").src = `${luxon.DateTime.now().c.hour}${luxon.DateTime.now().c.hour}.mp3`;
                 document.querySelectorAll("audio").forEach(el => {
                     el.play();
                 });

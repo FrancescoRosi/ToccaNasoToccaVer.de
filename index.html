@@ -1,1 +1,183 @@
-<h1>Prossimamente...</h1>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#00ff00">
+        <meta name="msapplication-TileColor" content="#00ff00">
+        <meta name="theme-color" content="#00ff00">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css" integrity="sha512-HqxHUkJM0SYcbvxUw5P60SzdOTy/QVwA1JJrvaXJv4q7lmbDZCmZaqz01UPOaQveoxfYRv1tHozWGPMcuTBuvQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://fonts.googleapis.com/css?family=Inter:900" rel="stylesheet" />
+        <title>TOCCA NASO TOCCA VERDE</title>
+        <style>
+            * {
+                font-family: "Inter", sans-serif;
+            }
+            html {
+                overflow: hidden;
+            }
+            body {
+                background: black;
+            }
+            body::after {
+                position: absolute;
+                width: 0;
+                height: 0;
+                overflow: hidden;
+                z-index:-1;
+                content: url("/1.png") url("/2.png") url("/3.png");
+            }
+            .e {
+                width: 100vw;
+                height: 100vh;
+            }
+            .hidden {
+                opacity: 0;
+            }
+            img:first-of-type {
+                transform: rotateY(180deg);
+            }
+            img {
+                height: calc(100vh - 16rem);
+                margin-top: 8rem;
+                margin-bottom: 8rem;
+                pointer-events: none;
+                user-select: none;
+            }
+            @keyframes background {
+                0% {
+                    background: green;
+                }
+                11.11% {
+                    background: url("/1.png");
+                }
+                22.22% {
+                    background: green;
+                }
+                33.33% {
+                    background: green;
+                }
+                44.44% {
+                    background: url("/2.png");
+                }
+                55.55% {
+                    background: green;
+                }
+                66.66% {
+                    background: green;
+                }
+                77.77% {
+                    background: url("/3.png");
+                }
+                88.88% {
+                    background: green;
+                }
+                99.99% {
+                    background: green;
+                }
+            }
+            @keyframes blendmode {
+                0% {
+                    mix-blend-mode: initial;
+                }
+                11.11% {
+                    mix-blend-mode: exclusion;
+                }
+                22.22% {
+                    mix-blend-mode: initial;
+                }
+                33.33% {
+                    mix-blend-mode: initial;
+                }
+                44.44% {
+                    mix-blend-mode: exclusion;
+                }
+                55.55% {
+                    mix-blend-mode: initial;
+                }
+                66.66% {
+                    mix-blend-mode: initial;
+                }
+                77.77% {
+                    mix-blend-mode: exclusion;
+                }
+                88.88% {
+                    mix-blend-mode: initial;
+                }
+                99.99% {
+                    mix-blend-mode: initial;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="e is-flex is-justify-content-space-between is-align-items-center">
+            <img src="/GIF/1.gif" class="hidden">
+            <h1 class="has-text-white is-size-1">104</h1>
+            <img src="/GIF/1.gif" class="hidden">
+            <audio loop></audio>
+            <!-- <audio src="Suavemente.webm" class="suavemente" loop></audio> -->
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.2.1/luxon.min.js" integrity="sha512-pyR2hpC7bLig9Ub4eUIOC/BAO4anpdt7jhpF4dfrPv+qIg+KWztdVjFPCRCsRaWVfUylUCvrrxqMFNrJBdQIjQ==" crossorigin="anonymous"></script>
+        <script>
+            // document.querySelector(".suavemente").volume = 0.1;
+            const updatetime = () => {
+                document.querySelector("h1").innerText = luxon.DateTime.now().toFormat("HH:mm");
+                setInterval(() => {
+                    updatetime();
+                }, 60000);
+            }
+            const trigger = () => {
+                document.querySelectorAll(".hidden").forEach(el => {
+                    el.classList.replace("hidden", "hidden-no-more");
+                });
+                // document.querySelector("audio").src = `${luxon.DateTime.now().c.hour}${luxon.DateTime.now().c.hour}.mp3`;
+                document.querySelector("audio").src = "1010.mp3";
+                document.querySelectorAll("audio").forEach(el => {
+                    el.play();
+                });
+                interval = setInterval(() => {
+                    document.querySelector("audio").currentTime = 0;
+                }, 3000);
+                document.body.style.background = "green";
+                document.body.style.animation = "background 9s infinite step-end";
+                document.querySelector("h1").style.animation = "blendmode 9s infinite step-end";
+                setTimeout(() => {
+                    document.querySelectorAll(".hidden-no-more").forEach(el => {
+                        el.classList.replace("hidden-no-more", "hidden");
+                    });
+                    document.querySelectorAll("audio").forEach(el => {
+                        el.pause();
+                        el.currentTime = 0;
+                    });
+                    clearInterval(interval);
+                    document.body.style.background = "black";
+                    document.body.style.animation = "";
+                    document.querySelector("h1").style.animation = "";
+                }, 60000);
+                if (luxon.DateTime)
+                setInterval(() => {
+                    trigger();
+                }, 3660000); 
+            }
+            updatetime();
+            setTimeout(() => {
+                updatetime();
+            }, luxon.DateTime.fromFormat(luxon.DateTime.now().plus({ minutes: 1 }).toFormat("HH:mm"), "HH:mm").ts - luxon.DateTime.now().ts);
+            if (luxon.DateTime.fromFormat(`${luxon.DateTime.now().c.hour}:${luxon.DateTime.now().c.hour}`, "HH:mm").ts - luxon.DateTime.now().ts < 0) {
+                setTimeout(() => {
+                    trigger();
+                }, luxon.DateTime.fromFormat(`${luxon.DateTime.now().plus({ hours: 1 }).c.hour}:${luxon.DateTime.now().plus({ hours: 1 }).c.hour}`, "HH:mm").ts - luxon.DateTime.now().ts);
+            } else {
+                setTimeout(() => {
+                    trigger();
+                }, luxon.DateTime.fromFormat(`${luxon.DateTime.now().c.hour}:${luxon.DateTime.now().c.hour}`, "HH:mm").ts - luxon.DateTime.now().ts);
+            }
+        </script>
+    </body>
+</html>
